@@ -1,5 +1,9 @@
 package com.example.beastmodewebdevysmolyar.repositories;
 
-public interface UserRepository {
+import org.springframework.data.repository.CrudRepository;
+
+import com.example.beastmodewebdevysmolyar.models.User; 
+
+public interface UserRepository extends CrudRepository<User, Integer> {
 
 }
