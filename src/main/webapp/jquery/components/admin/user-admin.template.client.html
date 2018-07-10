@@ -2,71 +2,84 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>User Admin</title>
     <link rel="stylesheet" href=
             "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href=
             "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-    <link href="user-admin.style.client.css" rel="stylesheet" />
+    <link href="user-admin.style.client.css" rel="stylesheet"/>
     <script
             src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!--  <script src="../services/user.service.client.js"></script> -->
+    <script src="../../services/user.service.client.js"></script>
     <script src="user-admin.controller.client.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+    <style>
+        body {
+            background-color: #fffdf4;
+        }
+    </style>
+
 </head>
 <body>
+<div class="p-2">
+    <h1>User Admin</h1>
+    <div id="admin-table" class="table-responsive">
+    <table bgcolor="#dcdcdc" class="table table-striped" border="1">
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>Password</th>
+            <th>First</th>
+            <th>Last</th>
+            <th>Email</th>
+            <th>Role</th>
+        </tr>
+        <tr class="wbdv-form">
+            <td><input id="usernameFld" class="form-control"
+                       placeholder="Username"/></td>
+            <td><input id="passwordFld" class="form-control"
+                       placeholder="Password"/></td>
+            <td><input id="firstNameFld" class="form-control"
+                       placeholder="First Name"/></td>
+            <td><input id="lastNameFld" class="form-control"
+                       placeholder="Last Name"/></td>
+            <td><select id="roleFld" class="form-control">
+                <option value="FACULTY">Faculty</option>
+                <option value="STUDENT">Student</option>
+                <option value="ADMIN">Admin</option>
+            </select></td>
+            <td><span class="float-right" style="white-space: nowrap">
+      <i data-toggle="tooltip" title="Search" class="fa-2x fa fa-search wbdv-search"></i>
+            <i data-toggle="tooltip" title="Create" class="fa-2x fa fa-plus wbdv-create"></i>
+            <i data-toggle="tooltip" title="Update" class="fa-2x fa fa-check wbdv-update"></i>
+  </span></td>
+        </tr>
+        <tbody class="wbdv-tbody">
+        <tr class="wbdv-template wbdv-user wbdv-hidden">
+            <td class="wbdv-username">ada</td>
+            <td>&nbsp;</td>
+            <td class="wbdv-first-name">Ada</td>
+            <td class="wbdv-last-name">Lovelace</td>
+            <td class="wbdv-role">FACULTY</td>
+            <td class="wbdv-actions">
+        <span class="float-right">
+          <i data-toggle="tooltip" title="Remove" id="wbdv-remove" class="fa-2x fa fa-times wbdv-remove"></i>
+          <i data-toggle="tooltip" title="Edit" id="wbdv-edit" class="fa-2x fa fa-pencil wbdv-edit"></i>
+        </span>
+            </td>
+        </tr>
 
-<h1>User Admin</h1>
+        </tbody>
+        <tfoot>
 
-<table border="1">
-    <thead>
-    <tr>
-        <th>Username</th>
-        <th>Password</th>
-        <th>First</th>
-        <th>Last</th>
-        <th>Email</th>
-        <th>Role</th>
-        <th>&nbsp;</th>
-    </tr>
-    <tr>
-        <th><input/></th>
-        <th><input/></th>
-        <th><input/></th>
-        <th><input/></th>
-        <th><input/></th>
-        <th>
-            <select>
-                <option value="FACULTY">
-                    Faculty (adfsk sdfg sdfg sdfg)
-                </option>
-                <option value="STUDENT">
-                    Student
-                </option>
-            </select>
-        </th>
-        <th>
-            <button>Update</button>
-            <button>Create</button>
-        </th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>alice</td>
-        <td>****</td>
-        <td>Alice</td>
-        <td>Wonderland</td>
-        <td>alice@wonderland.com</td>
-        <td>Faculty</td>
-        <td>
-            <button>Delete</button>
-            <button>Edit</button>
-        </td>
-    </tr>
-    </tbody>
-    <tfoot>
-
-    </tfoot>
-</table>
+        </tfoot>
+    </table>
+    </div>
+</div>
 </body>
 </html>
