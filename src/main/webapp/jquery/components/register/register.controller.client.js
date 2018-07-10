@@ -27,7 +27,15 @@
             headers: {
                 'Content-Type': 'application/json'
             }
-        });
+        }).then(registrationSuccessful, registrationFailed);
+        
+        function registrationSuccessful() {
+
+        }
+
+        function registrationFailed() {
+
+        }
 
     }
 })();
