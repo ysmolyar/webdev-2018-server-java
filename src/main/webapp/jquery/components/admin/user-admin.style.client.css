@@ -1,0 +1,30 @@
+input {
+    margin-bottom: 10px;
+}
+
+.wbdv-update {
+    color: midnightblue;
+}
+
+.wbdv-remove {
+    color: midnightblue;
+}
+
+.wbdv-edit {
+    color: midnightblue;
+}
+
+.wbdv-search {
+    color: midnightblue;
+}
+
+.wbdv-create {
+    color: midnightblue;
+}
+
+
+
+/* mouse over link */
+i:hover {
+    color: lightblue;
+}
