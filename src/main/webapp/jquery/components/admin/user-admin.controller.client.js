@@ -42,10 +42,6 @@
             tr.append(td);
 
             td = $('<td>');
-            td.append('hello@world.com');
-            tr.append(td);
-
-            td = $('<td>');
             td.append('Student');
             tr.append(td);
 
