@@ -23,6 +23,7 @@
 
     function updateUser() {
         var user = {
+            username: $username.val(),
             firstName: $firstName.val(),
             lastName: $lastName.val()
         };
