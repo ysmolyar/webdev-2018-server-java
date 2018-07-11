@@ -45,7 +45,7 @@
     }
 
     function profile() {
-        return fetch('/profile', {
+        return fetch('/api/profile', {
             'credentials': 'include'
         })
             .then(function (response) {
