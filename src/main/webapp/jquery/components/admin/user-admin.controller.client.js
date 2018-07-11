@@ -42,6 +42,6 @@
     function renderUsers(users) {
 
     }
-    
+
 })();
 
