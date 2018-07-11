@@ -2,9 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href= "login.style.client.css"/>
+    <link href="../css/components.style.client.css" rel="stylesheet"/>
     <title>Login</title>
 </head>
 <body>
+<div class="container-fluid">
 <h1>Login</h1>
 
 <div>
@@ -12,7 +16,7 @@
         Username
     </label>
     <input type="text"
-           placeholder="alice"
+           placeholder="Username"
            id="username"/>
 </div>
 
@@ -21,14 +25,21 @@
         Password
     </label>
     <input type="password"
-           placeholder="1234qwerasdf"
+           placeholder="Password"
            id="password"/>
 </div>
-<button>
+<button class="btn btn-primary" id="loginBtn">
     Login
 </button>
-<a href="register.template.client.html">
+<a href="../register/register.template.client.html">
     Sign Up
 </a>
+</div>
 </body>
+<script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script src="login.controller.client.js"></script>
+
 </html>
