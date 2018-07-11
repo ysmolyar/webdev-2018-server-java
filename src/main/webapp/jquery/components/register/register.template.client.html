@@ -3,17 +3,30 @@
         <link rel="stylesheet" href=
                 "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
         <link href="../css/components.style.client.css" rel="stylesheet"/>
-        <script
-                src="https://code.jquery.com/jquery-3.3.1.min.js"
-                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-                crossorigin="anonymous"></script>
-
-        <script src="register.controller.client.js"></script>
+        <link href="register.style.client.css" rel="stylesheet"/>
         <title>Registration Page</title>
     </head>
     <body>
         <h1>Register</h1>
 
+
+
+        <div>
+            <label for="firstName">
+                First Name
+            </label>
+            <input type="text"
+                   class="form-control wbdv"
+                   id="firstName"/>
+        </div>
+        <div>
+            <label for="lastName">
+                Last Name
+            </label>
+            <input type="text"
+                   class="form-control wbdv"
+                   id="lastName"/>
+        </div>
         <div>
             <label for="username">
                 Username
@@ -40,11 +53,17 @@
                    class="form-control wbdv"
                    id="password2"/>
         </div>
-        <button id="registerBtn">
+        <button class="btn btn-success" id="registerBtn">
             Register
         </button>
-        <a href="../login/login.template.client.html">
+        <a id="loginBtn" href="../login/login.template.client.html">
             Login
         </a>
+        <script
+                src="https://code.jquery.com/jquery-3.3.1.min.js"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+                crossorigin="anonymous"></script>
+
+        <script src="register.controller.client.js"></script>
     </body>
 </html>

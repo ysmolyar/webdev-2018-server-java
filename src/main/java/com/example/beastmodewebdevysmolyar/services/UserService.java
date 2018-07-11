@@ -23,7 +23,7 @@ public class UserService {
 	@Autowired
 	UserRepository userRepository;
 	
-	@PostMapping("/register")
+	@PostMapping("/api/register")
 	public User register(@RequestBody User user, HttpSession session) {
 		
 		User cu = userRepository.save(user);
@@ -33,13 +33,13 @@ public class UserService {
 		return cu;
 	}
 	
-	@GetMapping("/profile")
+	@GetMapping("/api/profile")
 	public Optional<User> profile(HttpSession session) {
 		User currentUser = (User) session.getAttribute("currentUser");
 		return userRepository.findById(currentUser.getId());
 	}
 	
-	@PostMapping("/login")
+	@PostMapping("/api/login")
 	public User login(@RequestBody User user, HttpSession session) {
 		user = userRepository.findUserByCredentials(user.getUsername(), user.getPassword());
 		session.setAttribute("currentUser", user);

@@ -25,10 +25,6 @@ function UserServiceClient() {
     }
 
     function createUser(user, callback) {
-        var url = "/api/user/" + user.id;
-        return fetch(url, {
-            method: ''
-        })
 
     }
 
