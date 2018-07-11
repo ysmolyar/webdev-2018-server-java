@@ -26,7 +26,8 @@
             body: userObjStr,
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
+            'credentials': "include"
         }).then(registrationSuccessful, registrationFailed);
         
         function registrationSuccessful() {

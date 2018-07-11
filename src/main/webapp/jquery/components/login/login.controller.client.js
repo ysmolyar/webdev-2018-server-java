@@ -28,6 +28,6 @@
     }
 
     function navigateToProfile() {
-        window.location.href = '/components/profile/profile.template.client.html';
+        window.location.href = '../profile/profile.template.client.html';
     }
 })();
