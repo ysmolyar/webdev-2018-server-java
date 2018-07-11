@@ -17,7 +17,7 @@
             'username': $username.val(),
             "password": $password.val()
         };
-        fetch('/login', {
+        fetch('/api/login', {
             method: 'post',
             body: JSON.stringify(user),
             credentials: 'include',
