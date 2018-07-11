@@ -2,6 +2,10 @@ input {
     margin-bottom: 10px;
 }
 
+body {
+    background-color: #fffdf4;
+}
+
 .wbdv-update {
     color: midnightblue;
 }

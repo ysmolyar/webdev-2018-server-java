@@ -30,11 +30,11 @@
         }).then(registrationSuccessful, registrationFailed);
         
         function registrationSuccessful() {
-
+            window.location.href('../profile/profile.template.client.html');
         }
 
         function registrationFailed() {
-
+            alert("oops");
         }
 
     }
