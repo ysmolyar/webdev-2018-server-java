@@ -7,11 +7,24 @@ function UserServiceClient() {
     this.url = 'http://localhost:8080/api/user';
     var self = this;
 
-    function createUser(user, callback) {
 
+    function deleteUser(id) {
+        var url = "/api/user/" + id;
+
+        return fetch(url, {
+            method: 'delete'
+        })
     }
 
-    function findAllUsers(callback) {
+    function findAllUsers() {
+        var url = "/api/user";
+        return fetch(url)
+            .then(function (response) {
+                return response.json();
+            });
+    }
+
+    function createUser(user, callback) {
 
     }
 
@@ -23,7 +36,4 @@ function UserServiceClient() {
 
     }
 
-    function deleteUser(userId, callback) {
-
-    }
 }
