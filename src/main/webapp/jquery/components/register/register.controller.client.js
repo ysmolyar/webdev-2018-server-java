@@ -37,7 +37,6 @@
         }).then(registrationSuccessful, registrationFailed);
         
         function registrationSuccessful() {
-            alert("successful registration message");
             window.location.href = "../profile/profile.template.client.html";
         }
 
