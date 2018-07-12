@@ -2,11 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script
-            src="https://code.jquery.com/jquery-3.3.1.min.js"
-            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-            crossorigin="anonymous"></script>
-    <script src="login.controller.client.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href= "login.style.client.css"/>
     <link href="../css/components.style.client.css" rel="stylesheet"/>
@@ -14,7 +9,6 @@
 </head>
 <body>
 <div class="container-fluid">
-    <div class="alert alert-danger" id="dangerAlert" role="alert"></div>
     <h1>Sign In</h1>
 
     <div class="form-group row">
@@ -38,7 +32,7 @@
                    id="password"/>
         </div>
     </div>
-    <button class="btn btn-primary btn-outline-success btn-block" id="loginBtn">
+    <button class="btn btn-primary btn-success btn-block" id="loginBtn">
         Login
     </button>
     <a href="../register/register.template.client.html">
@@ -46,6 +40,10 @@
     </a>
 </div>
 </body>
-
+<script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script src="login.controller.client.js"></script>
 
 </html>

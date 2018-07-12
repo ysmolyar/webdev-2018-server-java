@@ -40,9 +40,9 @@
 
     function renderUser(user) {
         currentUser = user;
-        $username.value(user.username);
-        $firstName.value(user.firstName);
-        $lastName.value(user.lastName);
+        $username.val(user.username);
+        $firstName.val(user.firstName);
+        $lastName.val(user.lastName);
     }
 
     function profile() {
