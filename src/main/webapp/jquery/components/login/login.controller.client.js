@@ -1,13 +1,15 @@
 (function () {
     var $username,
         $password,
-        $loginBtn;
+        $loginBtn,
+    $invalidLoginPopup;
+    bootstrap_alert = 
 
     function init() {
         $username = $('#username');
         $password = $('#password');
         $loginBtn = $('#loginBtn');
-
+        $invalidLoginPopup = $('#dangerAlert');
         $loginBtn.click(login);
     }
     init();
@@ -24,10 +26,14 @@
             headers: {
                 'content-type': 'application/json'
             }
-        }).then(navigateToProfile);
+        }).then(navigateToProfile, unsuccessfulLogin);
     }
 
     function navigateToProfile() {
         window.location.href = '../profile/profile.template.client.html';
+    }
+
+    function unsuccessfulLogin() {
+        alert("Invalid username or password!");
     }
 })();
