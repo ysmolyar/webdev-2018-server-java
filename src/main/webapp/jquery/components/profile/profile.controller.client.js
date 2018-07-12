@@ -3,7 +3,7 @@
 (function () {
 
     var $username, $firstName, $lastName,
-        $updateBtn;
+        $updateBtn, $logoutBtn;
     var currentUser = null;
 
     function init() {
@@ -12,9 +12,9 @@
         $firstName = $("#firstName");
         $lastName = $("#lastName");
         $updateBtn = $("#updateBtn");
-
+        $logoutBtn = $("#logoutBtn");
         $updateBtn.click(updateUser);
-
+        $logoutBtn.click(logoutUser);
 
         profile()
             .then(renderUser);
@@ -61,7 +61,7 @@
             });
     }
 
-    function handleResponse() {
-
+    function logoutUser() {
+        window.location.href = '../login/login.template.html';
     }
 })();
