@@ -6,6 +6,7 @@
     var firstNameFld = $('#firstName');
     var lastNameFld = $('#lastName');
     var usernameFld = $('#username');
+    var emailFld = $('#email');
     var passwordFld = $('#password');
     var password2Fld = $('#password2');
 
@@ -14,6 +15,7 @@
     function registerHandler() {
         var firstNameStr = firstNameFld.val();
         var lastNameStr = lastNameFld.val();
+        var emailStr = emailFld.val();
         var usernameStr = usernameFld.val();
         var passwordStr = passwordFld.val();
         var password2Str = password2Fld.val();
@@ -21,6 +23,7 @@
         var userObj = {
             firstName: firstNameStr,
             lastName: lastNameStr,
+            email: emailStr,
             username: usernameStr,
             password: passwordStr
         };
@@ -37,7 +40,6 @@
         }).then(registrationSuccessful, registrationFailed);
         
         function registrationSuccessful() {
-            if (usernameStr)
             window.location.href = "../profile/profile.template.client.html";
         }
 

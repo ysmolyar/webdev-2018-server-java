@@ -2,13 +2,14 @@
 //IIFE
 (function () {
 
-    var $username, $firstName, $lastName,
+    var $username, $firstName, $lastName, $email,
         $updateBtn, $logoutBtn;
     var currentUser = null;
 
     function init() {
 
         $username = $("#username");
+        $email = $("#email");
         $firstName = $("#firstName");
         $lastName = $("#lastName");
         $updateBtn = $("#updateBtn");
@@ -34,15 +35,17 @@
     function renderUser(user) {
         currentUser = user;
         $username.val(user.username);
+        $email.val(user.email);
         $firstName.val(user.firstName);
         $lastName.val(user.lastName);
     }
 
     function updateUser() {
         var user = {
-            username: $username.val(),
-            firstName: $firstName.val(),
-            lastName: $lastName.val()
+            'username': username.val(),
+            'firstName': firstName.val(),
+            'lastName': lastName.val(),
+            'email': email.val()
         };
 
         fetch("/api/user/" + currentUser.id, {
