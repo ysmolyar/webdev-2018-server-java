@@ -14,9 +14,10 @@
 
     function login() {
         var user = {
-            'username': $username.val(),
+            "username": $username.val(),
             "password": $password.val()
         };
+
         fetch('/api/login', {
             method: 'post',
             body: JSON.stringify(user),
@@ -24,10 +25,14 @@
             headers: {
                 'content-type': 'application/json'
             }
-        }).then(navigateToProfile);
+        }).then(navigateToProfile, failedLogin);
     }
 
     function navigateToProfile() {
         window.location.href = '../profile/profile.template.client.html';
+    }
+
+    function failedLogin(){
+        alert("Invalid username or password!");
     }
 })();

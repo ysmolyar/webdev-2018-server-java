@@ -21,6 +21,23 @@
     }
     init();
 
+
+    function profile() {
+        return fetch('/api/profile', {
+            'credentials': 'include'
+        })
+            .then(function (response) {
+                return response.json();
+            });
+    }
+
+    function renderUser(user) {
+        currentUser = user;
+        $username.val(user.username);
+        $firstName.val(user.firstName);
+        $lastName.val(user.lastName);
+    }
+
     function updateUser() {
         var user = {
             username: $username.val(),
@@ -36,29 +53,6 @@
                 'content-type': 'application/json'
             }
         });
-    }
-
-    function renderUser(user) {
-        currentUser = user;
-        $username.val(user.username);
-        $firstName.val(user.firstName);
-        $lastName.val(user.lastName);
-    }
-
-    function profile() {
-        return fetch('/api/profile', {
-            'credentials': 'include'
-        })
-            .then(function (response) {
-                return response.json();
-            });
-    }
-
-    function findUserById(userId) {
-        return fetch('/api/user/' + userId)
-            .then(function (response) {
-                return response.json();
-            });
     }
 
     function logoutUser() {

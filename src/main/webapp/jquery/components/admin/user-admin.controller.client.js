@@ -70,30 +70,6 @@
             });
     }
 
-
-    function createUser() {
-
-    }
-
-    function findAllUsers() {
-
-    }
-
-    function findUserById() {
-
-    }
-
-    function selectUser() {
-
-    }
-
-    function updateUser() {
-
-    }
-
-    function renderUser(user) {
-
-    }
 })();
 
 

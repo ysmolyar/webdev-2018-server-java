@@ -37,6 +37,7 @@
         }).then(registrationSuccessful, registrationFailed);
         
         function registrationSuccessful() {
+            if (usernameStr)
             window.location.href = "../profile/profile.template.client.html";
         }
 
