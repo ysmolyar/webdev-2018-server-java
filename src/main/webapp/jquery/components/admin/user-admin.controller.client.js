@@ -42,6 +42,10 @@
             tr.append(td);
 
             td = $('<td>');
+            td.append(user.email);
+            tr.append(td);
+
+            td = $('<td>');
             td.append('Student');
             tr.append(td);
 
