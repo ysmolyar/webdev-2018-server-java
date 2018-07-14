@@ -11,6 +11,10 @@
     init();
 
     function init() {
+        $usernameFld = $('#usernameFld');
+        $usernameFld = $('#usernameFld');
+
+
         userServiceClient
             .findAllUsers()
             .then(renderUsers);
