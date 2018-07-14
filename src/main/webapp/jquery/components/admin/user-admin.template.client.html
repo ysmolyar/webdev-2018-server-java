@@ -11,14 +11,17 @@
     <link href="user-admin.style.client.css" rel="stylesheet"/>
     <link href="../css/components.style.client.css" rel="stylesheet"/>
     <script
-            src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
     <script src="../../services/user.service.client.js"></script>
     <script src="user-admin.controller.client.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('[data-toggle="tooltip"]').tooltip();
-        });
-    </script>
 </head>
 <body>
 <div class="container-fluid">
@@ -62,10 +65,6 @@
             <td class="wbdv-last-name"></td>
             <td class="wbdv-role"></td>
             <td class="wbdv-actions">
-        <span>
-          <i data-toggle="tooltip" title="Remove" id="wbdv-remove" class="fa-2x fa fa-times wbdv-remove"></i>
-          <i data-toggle="tooltip" title="Edit" id="wbdv-edit" class="fa-2x fa fa-pencil wbdv-edit"></i>
-        </span>
             </td>
         </tr>
 
