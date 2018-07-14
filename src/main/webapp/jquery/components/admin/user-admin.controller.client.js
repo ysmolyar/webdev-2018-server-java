@@ -46,9 +46,15 @@
             tr.append(td);
 
             td = $('<td>');
-            var deleteBtn = $('<button>DELETE</button>');
+            var deleteBtn = $('<i data-toggle="tooltip" title="Remove" id="wbdv-remove" ' +
+                'class="fa-2x fa fa-times wbdv-remove"></i>');
+            var editBtn = $('<i data-toggle="tooltip" title="Edit" id="wbdv-edit" ' +
+                'class="fa-2x fa fa-pencil wbdv-edit"></i>');
+            editBtn.click(editUser);
             deleteBtn.click(deleteUser);
             deleteBtn.attr('id', user.id);
+            editBtn.attr('id', user.id);
+            td.append(editBtn);
             td.append(deleteBtn);
             tr.append(td);
 
@@ -68,6 +74,10 @@
                     .findAllUsers()
                     .then(renderUsers);
             });
+    }
+
+    function editUser() {
+
     }
 
 })();

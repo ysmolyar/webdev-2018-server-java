@@ -8,10 +8,12 @@ input {
 
 .wbdv-remove {
     color: midnightblue;
+    padding-left: 10px;
 }
 
 .wbdv-edit {
     color: midnightblue;
+    padding-left: 15px;
 }
 
 .wbdv-search {
