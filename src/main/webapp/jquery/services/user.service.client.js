@@ -7,21 +7,16 @@ function UserServiceClient() {
     this.url = 'http://localhost:8080/api/user';
     var self = this;
 
-
-    function updateUser() {
-        var user = {
-            username: $username.val(),
-            firstName: $firstName.val(),
-            lastName: $lastName.val()
-        };
-
-        fetch("/api/user/" + currentUser.id, {
+    function updateUser(user) {
+        fetch("/api/user/" + user.id, {
             method: 'put',
             body: JSON.stringify(user),
             'credentials': 'include',
             headers: {
                 'content-type': 'application/json'
             }
+        }).then(function (response) {
+            return response.json();
         });
     }
 

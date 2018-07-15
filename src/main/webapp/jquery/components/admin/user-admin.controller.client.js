@@ -5,7 +5,7 @@
     var $usernameFld, $passwordFld, $emailFld, $roleFld;
     var $removeBtn, $editBtn, $createBtn, $updateBtn;
     var $firstNameFld, $lastNameFld;
-    var $userRowTemplate, $tbody;
+    var $userRowTemplate, $tbody, $currentSelectedUser;
     var userServiceClient = new UserServiceClient();
 
     init();
@@ -17,13 +17,25 @@
         $lastNameFld = $('#lastNameFld');
         $emailFld = $('#emailFld');
         $roleFld = $('#roleFld');
-        $updateBtn = $('#wbdv-update');
+        $updateBtn = $('.wbdv-update');
 
+        $updateBtn.click(updateAdminPage);
 
         userServiceClient
             .findAllUsers()
             .then(renderUsers);
 
+    }
+
+    function updateAdminPage(event) {
+        var button = $(event.currentTarget);
+        var id = button.attr('id');
+        userServiceClient.
+         findUserById(id)
+            .then(
+                userServiceClient
+                    .findAllUsers())
+            .then(renderUsers);
     }
 
     function renderUsers(users) {
@@ -76,6 +88,7 @@
         }
     }
 
+
     function deleteUser(event) {
         var button = $(event.currentTarget);
         var id = button.attr('id');
@@ -90,20 +103,20 @@
     }
 
     function editUser(event) {
-        var $editButton = $(event.currentTarget);
-        var editId = $editButton.attr('id');
+        return user = {
+            username: $usernameFld.val(),
+            password: $passwordFld.val(),
+            email: $emailFld.val(),
+            firstName: $firstNameFld.val(),
+            lastName: $lastNameFld.val()
+        };
 
-        return fetch('/api/user/' + editId, {
-            'credentials': 'include'
-        })
-            .then(function (response) {
-                return response.json();
-            });
     }
     function renderSelectedUser(event) {
         var $button = $(event.currentTarget);
         var id = $button.attr('id');
         var userObj = userServiceClient.findUserById(id);
+        $currentSelectedUser = userObj;
 
         userObj.then(function(user) {
             $usernameFld.val(user.username);
