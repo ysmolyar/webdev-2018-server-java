@@ -2,8 +2,8 @@
 
 (function () {
 
-    var $usernameFld, $passwordFld;
-    var $removeBtn, $editBtn, $createBtn;
+    var $usernameFld, $passwordFld, $emailFld, $roleFld;
+    var $removeBtn, $editBtn, $createBtn, $updateBtn;
     var $firstNameFld, $lastNameFld;
     var $userRowTemplate, $tbody;
     var userServiceClient = new UserServiceClient();
@@ -12,12 +12,18 @@
 
     function init() {
         $usernameFld = $('#usernameFld');
-        $usernameFld = $('#usernameFld');
+        $passwordFld = $('#passwordFld');
+        $firstNameFld = $('#firstNameFld');
+        $lastNameFld = $('#lastNameFld');
+        $emailFld = $('#emailFld');
+        $roleFld = $('#roleFld');
+        $updateBtn = $('#wbdv-update');
 
 
         userServiceClient
             .findAllUsers()
             .then(renderUsers);
+
     }
 
     function renderUsers(users) {
@@ -27,9 +33,9 @@
         tbody.empty();
         for(var i=0; i<users.length; i++) {
             var user = users[i];
-
             var tr = $('<tr>');
             var td = $('<td>');
+
             td.append(user.username);
             tr.append(td);
 
@@ -54,16 +60,16 @@
             tr.append(td);
 
             td = $('<td>');
-            var deleteBtn = $('<i data-toggle="tooltip" title="Remove" id="wbdv-remove" ' +
+            $removeBtn = $('<i data-toggle="tooltip" title="Remove" id="wbdv-remove" ' +
                 'class="fa-2x fa fa-times wbdv-remove"></i>');
-            var editBtn = $('<i data-toggle="tooltip" title="Edit" id="wbdv-edit" ' +
+            $editBtn = $('<i data-toggle="tooltip" title="Edit" id="wbdv-edit" ' +
                 'class="fa-2x fa fa-pencil wbdv-edit"></i>');
-            editBtn.click(editUser);
-            deleteBtn.click(deleteUser);
-            deleteBtn.attr('id', user.id);
-            editBtn.attr('id', user.id);
-            td.append(editBtn);
-            td.append(deleteBtn);
+            $editBtn.click(renderSelectedUser);
+            $removeBtn.click(deleteUser);
+            $removeBtn.attr('id', user.id);
+            $editBtn.attr('id', user.id);
+            td.append($editBtn);
+            td.append($removeBtn);
             tr.append(td);
 
             tr.appendTo(tbody);
@@ -71,9 +77,8 @@
     }
 
     function deleteUser(event) {
-        console.log(event);
-        var $button = $(event.currentTarget);
-        var id = $button.attr('id');
+        var button = $(event.currentTarget);
+        var id = button.attr('id');
 
         userServiceClient
             .deleteUser(id)
@@ -84,7 +89,31 @@
             });
     }
 
-    function editUser() {
+    function editUser(event) {
+        var $editButton = $(event.currentTarget);
+        var editId = $editButton.attr('id');
+
+        return fetch('/api/user/' + editId, {
+            'credentials': 'include'
+        })
+            .then(function (response) {
+                return response.json();
+            });
+    }
+    function renderSelectedUser(event) {
+        var $button = $(event.currentTarget);
+        var id = $button.attr('id');
+        var userObj = userServiceClient.findUserById(id);
+
+        userObj.then(function(user) {
+            $usernameFld.val(user.username);
+            $passwordFld.val(user.password);
+            $firstNameFld.val(user.firstName);
+            $lastNameFld.val(user.lastName);
+            $emailFld.val(user.email);
+            $roleFld.val("STUDENT");
+            console.log(user);
+        })
 
     }
 
