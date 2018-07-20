@@ -2,63 +2,58 @@
 //IIFE
 (function () {
 
-    var $username, $firstName, $lastName, $email,
+    var $username, $password, $firstName, $lastName, $email, $phoneNum, $role,
         $updateBtn, $logoutBtn;
     var currentUser = null;
+    var userService = new UserServiceClient();
 
     function init() {
 
         $username = $("#username");
+        $password = $("#password");
         $email = $("#email");
         $firstName = $("#firstName");
         $lastName = $("#lastName");
+        $phoneNum = $("#phoneNumFld");
+        $role = $("#roleFld");
         $updateBtn = $("#updateBtn");
         $logoutBtn = $("#logoutBtn");
         $updateBtn.click(updateUser);
         $logoutBtn.click(logoutUser);
 
-        profile()
+        userService.profile()
             .then(renderUser);
     }
     init();
 
-
-    function profile() {
-        return fetch('/api/profile', {
-            'credentials': 'include'
-        })
-            .then(function (response) {
-                return response.json();
-            });
-    }
-
     function renderUser(user) {
         currentUser = user;
         $username.val(user.username);
+        $password.val(user.password);
+        $phoneNum.val(user.phoneNum);
         $email.val(user.email);
         $firstName.val(user.firstName);
         $lastName.val(user.lastName);
+        $role.val(user.role);
     }
 
     function updateUser() {
         var user = {
-            'username': username.val(),
-            'firstName': firstName.val(),
-            'lastName': lastName.val(),
-            'email': email.val()
+            'username': $username.val(),
+            'password': $password.val(),
+            'firstName': $firstName.val(),
+            'lastName': $lastName.val(),
+            'email': $email.val(),
+            'phoneNum': $phoneNum.val()
         };
 
-        fetch("/api/user/" + currentUser.id, {
-            method: 'put',
-            body: JSON.stringify(user),
-            'credentials': 'include',
-            headers: {
-                'content-type': 'application/json'
-            }
-        });
+        userService.updateUser(user, currentUser.id)
+
     }
 
     function logoutUser() {
-        window.location.href = '../login/login.template.html';
+        userService.logoutUser().then(function () {
+            window.location.href = "../login/login.template.client.html";
+        });
     }
 })();

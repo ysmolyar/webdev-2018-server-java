@@ -4,7 +4,7 @@
 
     var $usernameFld, $passwordFld, $emailFld, $roleFld;
     var $removeBtn, $editBtn, $createBtn, $updateBtn;
-    var $firstNameFld, $lastNameFld;
+    var $firstNameFld, $lastNameFld, $dobFld, $phoneFld;
     var $firstNameStr, $lastNameStr, $emailStr, $usernameStr, $passwordStr, $roleStr, $password2Str;
     var $userRowTemplate, $tbody, $currentSelectedUser, $selectedUserId;
     var userServiceClient = new UserServiceClient();
@@ -20,6 +20,7 @@
         $lastNameFld = $('#lastNameFld');
         $emailFld = $('#emailFld');
         $roleFld = $('#roleFld');
+        $phoneFld = $("#phoneFld")
         $updateBtn = $('.wbdv-update');
         $createBtn = $('.wbdv-create');
 
@@ -47,7 +48,8 @@
             password: $passwordFld.val(),
             firstName: $firstNameFld.val(),
             lastName: $lastNameFld.val(),
-            email: $emailFld.val()
+            email: $emailFld.val(),
+            phoneNum: $phoneFld.val()
         };
 
 
@@ -102,6 +104,10 @@
             tr.append(td);
 
             td = $('<td>');
+            td.append(user.phoneNum);
+            tr.append(td);
+
+            td = $('<td>');
             td.append('Student');
             tr.append(td);
 
@@ -130,7 +136,8 @@
             lastName: $lastNameFld.val(),
             email: $emailFld.val(),
             username: $usernameFld.val(),
-            password: $passwordFld.val()
+            password: $passwordFld.val(),
+            phoneNum: $phoneFld.val()
         };
 
 
@@ -167,7 +174,8 @@
             password: $passwordFld.val(),
             email: $emailFld.val(),
             firstName: $firstNameFld.val(),
-            lastName: $lastNameFld.val()
+            lastName: $lastNameFld.val(),
+            phoneNum: $phoneFld.val()
         };
 
     }
@@ -182,6 +190,7 @@
             $firstNameFld.val(user.firstName);
             $lastNameFld.val(user.lastName);
             $emailFld.val(user.email);
+            $phoneFld.val(user.phoneNum);
             $roleFld.val("STUDENT");
         })
 
@@ -193,6 +202,7 @@
         $firstNameFld.val("");
         $lastNameFld.val("");
         $emailFld.val("");
+        $phoneFld.val("");
 
     }
 

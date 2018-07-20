@@ -7,6 +7,8 @@
     var lastNameFld = $('#lastName');
     var usernameFld = $('#username');
     var emailFld = $('#email');
+    var dobFld = $("#dobFld");
+    var phoneFld = $("#phoneNumFld");
     var passwordFld = $('#password');
     var password2Fld = $('#password2');
     var userService = new UserServiceClient();
@@ -19,12 +21,17 @@
         var emailStr = emailFld.val();
         var usernameStr = usernameFld.val();
         var passwordStr = passwordFld.val();
+        var phoneNumStr = phoneFld.val();
+        var dobStr = dobFld.val();
         var password2Str = password2Fld.val();
+
 
         var userObj = {
             firstName: firstNameStr,
             lastName: lastNameStr,
             email: emailStr,
+            phoneNum: phoneNumStr,
+            dob: dobStr,
             username: usernameStr,
             password: passwordStr
         };
