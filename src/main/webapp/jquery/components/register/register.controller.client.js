@@ -9,6 +9,7 @@
     var emailFld = $('#email');
     var passwordFld = $('#password');
     var password2Fld = $('#password2');
+    var userService = new UserServiceClient();
 
     registerBtn.click(registerHandler);
 
@@ -30,21 +31,22 @@
 
         var userObjStr = JSON.stringify(userObj);
 
-        fetch('/api/register', {
-            method: 'post',
-            credentials: "include",
-            body: userObjStr,
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        }).then(registrationSuccessful, registrationFailed);
+        userService.registerUser(userObjStr).then(function(response) {
+            if (response.status === 401) {
+                //401 is unauthorized
+                registrationFailed();
+            }
+            else {
+                registrationSuccessful();
+            }
+        });
         
         function registrationSuccessful() {
             window.location.href = "../profile/profile.template.client.html";
         }
 
         function registrationFailed() {
-            alert("oops");
+            alert("Registration failed!");
         }
 
     }
