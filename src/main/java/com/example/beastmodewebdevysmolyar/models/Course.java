@@ -23,7 +23,7 @@ public class Course {
     @OneToMany(mappedBy="course")
     private List<Module> modules;
     
-    
+
 	public int getId() {
 		return id;
 	}
@@ -50,5 +50,11 @@ public class Course {
 	}
 	public void setModified(Date modified) {
 		this.modified = modified;
+	}
+	public List<Module> getModules() {
+		return modules;
+	}
+	public void setModules(List<Module> modules) {
+		this.modules = modules;
 	}
 }
