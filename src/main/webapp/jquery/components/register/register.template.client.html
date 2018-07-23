@@ -12,7 +12,6 @@
     </head>
     <body>
         <h1>Register</h1>
-
         <div>
             <label for="firstName">
                 First Name
@@ -38,6 +37,45 @@
                    id="email"/>
         </div>
         <div>
+            <label for="phoneNumFld">
+                Phone Number
+            </label>
+                <input type="text" class="form-control" placeholder="555-123-4567" id="phoneNumFld"/>
+        </div>
+        <div>
+
+            <label for="roleFld">
+                Role
+            </label>
+                <select name="role"
+                        id="roleFld"
+                        class="form-control wbdv">
+                    <option value="">
+                        --Select Role--
+                    </option>
+                    <option value="FACULTY">
+                        Faculty
+                    </option>
+                    <option value="STUDENT">
+                        Student
+                    </option>
+                    <option value="ADMIN">
+                        Admin
+                    </option>
+                </select>
+        </div>
+
+        <div>
+            <label for="dobFld">
+                Date of Birth
+            </label>
+            <div>
+                <input id="dobFld"
+                       class="form-control wbdv"
+                       type="date"/>
+            </div>
+        </div>
+        <div>
             <label for="username">
                 Username
             </label>
@@ -53,7 +91,6 @@
                    class="form-control wbdv"
                    id="password"/>
         </div>
-
         <div>
             <label for="password2">
                 Validate Password
@@ -73,6 +110,7 @@
                 integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
                 crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="../../services/user.service.client.js"></script>
         <script src="register.controller.client.js"></script>
     </body>
 </html>

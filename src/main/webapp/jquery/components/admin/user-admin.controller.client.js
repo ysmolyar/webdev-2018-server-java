@@ -4,22 +4,36 @@
 
     var $usernameFld, $passwordFld, $emailFld, $roleFld;
     var $removeBtn, $editBtn, $createBtn, $updateBtn;
-    var $firstNameFld, $lastNameFld;
-    var $userRowTemplate, $tbody, $currentSelectedUser;
+    var $firstNameFld, $lastNameFld, $dobFld, $phoneFld;
+    var $firstNameStr, $lastNameStr, $emailStr, $usernameStr, $passwordStr, $roleStr, $password2Str;
+    var $userRowTemplate, $tbody, $currentSelectedUser, $selectedUserId;
     var userServiceClient = new UserServiceClient();
 
     init();
 
     function init() {
+
+        $selectedUserId = null;
         $usernameFld = $('#usernameFld');
         $passwordFld = $('#passwordFld');
         $firstNameFld = $('#firstNameFld');
         $lastNameFld = $('#lastNameFld');
         $emailFld = $('#emailFld');
         $roleFld = $('#roleFld');
+        $phoneFld = $("#phoneFld")
         $updateBtn = $('.wbdv-update');
+        $createBtn = $('.wbdv-create');
 
-        $updateBtn.click(updateAdminPage);
+        $firstNameStr = $firstNameFld.val();
+        $lastNameStr = $lastNameFld.val();
+        $emailStr = $emailFld.val();
+        $usernameStr = $usernameFld.val();
+        $passwordStr = $passwordFld.val();
+
+
+        $updateBtn.click(updateUser);
+        $createBtn.click(createUser);
+
 
         userServiceClient
             .findAllUsers()
@@ -27,15 +41,37 @@
 
     }
 
-    function updateAdminPage(event) {
-        var button = $(event.currentTarget);
-        var id = button.attr('id');
-        userServiceClient.
-         findUserById(id)
-            .then(
-                userServiceClient
-                    .findAllUsers())
-            .then(renderUsers);
+    function updateUser (event) {
+
+        var user = {
+            username: $usernameFld.val(),
+            password: $passwordFld.val(),
+            firstName: $firstNameFld.val(),
+            lastName: $lastNameFld.val(),
+            email: $emailFld.val(),
+            phoneNum: $phoneFld.val()
+        };
+
+
+        if ($selectedUserId == null) {
+            alert("Please select a user from the table!");
+        }
+        else {
+            userServiceClient.
+            updateUser(user, $selectedUserId)
+                .then(function () {
+
+                    $selectedUserId = null;
+
+                    userServiceClient
+                        .findAllUsers()
+                        .then(renderUsers);
+
+                    dumpFields();
+
+
+                });
+        }
     }
 
     function renderUsers(users) {
@@ -68,6 +104,10 @@
             tr.append(td);
 
             td = $('<td>');
+            td.append(user.phoneNum);
+            tr.append(td);
+
+            td = $('<td>');
             td.append('Student');
             tr.append(td);
 
@@ -89,6 +129,32 @@
     }
 
 
+    function createUser() {
+
+        var userObj = {
+            firstName: $firstNameFld.val(),
+            lastName: $lastNameFld.val(),
+            email: $emailFld.val(),
+            username: $usernameFld.val(),
+            password: $passwordFld.val(),
+            phoneNum: $phoneFld.val()
+        };
+
+
+        userServiceClient.createUser(userObj)
+            .then(function () {
+
+                dumpFields();
+
+                $selectedUserId = null;
+
+                userServiceClient.findAllUsers().then(renderUsers);
+
+            });
+
+
+    }
+
     function deleteUser(event) {
         var button = $(event.currentTarget);
         var id = button.attr('id');
@@ -108,27 +174,38 @@
             password: $passwordFld.val(),
             email: $emailFld.val(),
             firstName: $firstNameFld.val(),
-            lastName: $lastNameFld.val()
+            lastName: $lastNameFld.val(),
+            phoneNum: $phoneFld.val()
         };
 
     }
     function renderSelectedUser(event) {
         var $button = $(event.currentTarget);
         var id = $button.attr('id');
-        var userObj = userServiceClient.findUserById(id);
-        $currentSelectedUser = userObj;
+        $selectedUserId = id;
 
-        userObj.then(function(user) {
+        userServiceClient.findUserById($selectedUserId).then(function(user) {
             $usernameFld.val(user.username);
             $passwordFld.val(user.password);
             $firstNameFld.val(user.firstName);
             $lastNameFld.val(user.lastName);
             $emailFld.val(user.email);
+            $phoneFld.val(user.phoneNum);
             $roleFld.val("STUDENT");
-            console.log(user);
         })
 
     }
+
+    function dumpFields() {
+        $usernameFld.val("");
+        $passwordFld.val("");
+        $firstNameFld.val("");
+        $lastNameFld.val("");
+        $emailFld.val("");
+        $phoneFld.val("");
+
+    }
+
 
 })();
 
