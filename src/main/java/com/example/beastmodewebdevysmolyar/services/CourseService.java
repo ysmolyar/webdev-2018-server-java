@@ -4,13 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.beastmodewebdevysmolyar.models.Course;
+import com.example.beastmodewebdevysmolyar.repositories.CourseRepository;
 
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "*", maxAge = 3600)
 public class CourseService {
 
     @Autowired
@@ -39,7 +39,7 @@ public class CourseService {
     public Course findCourseById(@PathVariable("id") int courseId) {
         Optional<Course> possibleCourse = courseRepository.findById(courseId);
         if (possibleCourse.isPresent()) {
-            return potentialCourse.get();
+            return possibleCourse.get();
         }
         return null;
     }
