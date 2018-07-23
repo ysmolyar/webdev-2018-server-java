@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class CourseService {
 
     @Autowired
@@ -19,8 +20,8 @@ public class CourseService {
     @PostMapping("/api/course")
     public Course createCourse(@RequestBody Course course) {
         Date date = new Date();
-        course.setCreatedDate(date);
-        course.setModifiedDate(date);
+        course.setCreated(date);
+        course.setModified(date);
         courseRepository.save(course);
         return course;
     }
@@ -52,7 +53,7 @@ public class CourseService {
             course.setTitle(newCourse.getTitle());
 
             Date date = new Date();
-            course.setModifiedDate(date);
+            course.setModified(date);
             courseRepository.save(course);
             return course;
         }

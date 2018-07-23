@@ -17,9 +17,9 @@ public class Course {
     private int id;
     private String title;
     @Temporal(TemporalType.TIMESTAMP)
-    private Date createdDate;
+    private Date created;
     @Temporal(TemporalType.TIMESTAMP)
-    private Date modifiedDate;
+    private Date modified;
     @OneToMany(mappedBy="course")
     private List<Module> modules;
     
@@ -27,25 +27,28 @@ public class Course {
 	public int getId() {
 		return id;
 	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 	public String getTitle() {
 		return title;
 	}
+	
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public Date getCreatedDate() {
-		return createdDate;
+	public Date getCreated() {
+		return created;
 	}
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
+	public void setCreated(Date created) {
+		this.created = created;
 	}
-	public Date getModifiedDate() {
-		return modifiedDate;
+	public Date getModified() {
+		return modified;
 	}
-	public void setModifiedDate(Date modifiedDate) {
-		this.modifiedDate = modifiedDate;
+	public void setModified(Date modified) {
+		this.modified = modified;
 	}
 }
