@@ -24,7 +24,9 @@ input {
     color: midnightblue;
 }
 
-
+span.float-right {
+    white-space: nowrap;
+}
 
 /* mouse over link */
 i:hover {

@@ -1,5 +1,7 @@
 package com.example.beastmodewebdevysmolyar.models;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
@@ -14,10 +16,22 @@ public class User {
 	private String username;
 	private String password;
 	private String email;
+	private Date dob;
+	private String phoneNum;
 	private String firstName;
 	private String lastName;
+	private String role;
 
 	
+	
+    public String getPhoneNum() {
+		return phoneNum;
+	}
+
+	public void setPhoneNum(String phoneNum) {
+		this.phoneNum = phoneNum;
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -65,6 +79,22 @@ public class User {
 	
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public Date getDob() {
+		return dob;
+	}
+
+	public void setDob(Date dob) {
+		this.dob = dob;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 }

@@ -1,7 +1,10 @@
 (function () {
     var $username,
         $password,
-        $loginBtn;
+        $loginBtn,
+    userService;
+
+    userService = new UserServiceClient();
 
     function init() {
         $username = $('#username');
@@ -13,19 +16,37 @@
     init();
 
     function login() {
-        var user = {
-            "username": $username.val(),
-            "password": $password.val()
-        };
 
-        fetch('/api/login', {
-            method: 'post',
-            body: JSON.stringify(user),
-            credentials: 'include',
-            headers: {
-                'content-type': 'application/json'
-            }
-        }).then(navigateToProfile, failedLogin);
+        if ($username.val() === "" && $password === "") {
+            alert("Please type a username and a password.");
+        }
+        else if ($username.val() === "") {
+            alert("Please type in a valid username.");
+        }
+        else if ($password.val === "") {
+            alert("Please type in a valid password.");
+        }
+        else {
+
+            var user = {
+                "username": $username.val(),
+                "password": $password.val()
+            };
+
+
+
+          userService.loginUser(user)
+              .then(function (response) {
+                  if (response.status === 401) {
+                      failedLogin();
+                  }
+                  else if (response.status === 200) {
+                      navigateToProfile();
+                  }
+                  else {
+                      genericFailedLogin();
+                  }
+            })
     }
 
     function navigateToProfile() {
@@ -34,5 +55,10 @@
 
     function failedLogin(){
         alert("Invalid username or password!");
+    }
+
+    function genericFailedLogin() {
+            alert("Login failed.");
+        }
     }
 })();
