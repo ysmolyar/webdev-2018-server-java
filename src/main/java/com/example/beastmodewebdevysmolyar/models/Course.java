@@ -16,9 +16,9 @@ public class Course {
     private int id;
     private String title;
     @Temporal(TemporalType.TIMESTAMP)
-    private Date created;
+    private Date createdDate;
     @Temporal(TemporalType.TIMESTAMP)
-    private Date modified;
+    private Date modifiedDate;
     
     
 	public int getId() {
@@ -33,16 +33,16 @@ public class Course {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public Date getCreated() {
-		return created;
+	public Date getCreatedDate() {
+		return createdDate;
 	}
-	public void setCreated(Date created) {
-		this.created = created;
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
 	}
-	public Date getModified() {
-		return modified;
+	public Date getModifiedDate() {
+		return modifiedDate;
 	}
-	public void setModified(Date modified) {
-		this.modified = modified;
+	public void setModifiedDate(Date modifiedDate) {
+		this.modifiedDate = modifiedDate;
 	}
 }
