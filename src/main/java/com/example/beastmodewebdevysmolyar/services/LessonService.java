@@ -28,7 +28,7 @@ public class LessonService {
     @Autowired
     LessonRepository lessonRepository;
 
-    @PostMapping("/api/course/{cid}/module")
+    @PostMapping("/api/course/{cid}/module/{mid}/lesson")
     public Lesson createLesson(@RequestBody Lesson lesson, @PathVariable("mid") int mid) {
         Optional<Module> maybeModule = moduleRepository.findById(mid);
         if (maybeModule != null) {
