@@ -18,15 +18,6 @@ public class Lesson {
     @JsonIgnore
     private Module module;
 
-    public Lesson(int id, String title, Module module) {
-        this.id = id;
-        this.title = title;
-        this.module = module;
-    }
-
-    public Lesson() {
-
-    }
 
     public int getId() {
         return id;

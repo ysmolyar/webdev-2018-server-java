@@ -23,7 +23,7 @@ public class Module {
 	private Course course;
 	@OneToMany(mappedBy="module")
 	private List<Lesson> lessons;
-
+ 
 	
     public int getId() {
         return id;
