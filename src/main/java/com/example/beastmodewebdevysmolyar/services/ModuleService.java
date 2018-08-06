@@ -47,12 +47,12 @@ public class ModuleService {
 		moduleRepository.deleteById(moduleId);
 	}
 
-	@GetMapping("/api/course/{cid}/module/{id}") 
+	@GetMapping("/api/module/") 
 	public List<Module> findAllModules() {
 		return (List<Module>) moduleRepository.findAll();
 	}
 
-	@GetMapping("/api/module/{id}")
+	@GetMapping("/api/course/{cid}/module/{id}")
 	public Module findModuleById(@PathVariable("id") int moduleId) {
 		Optional<Module> potentialModule = moduleRepository.findById(moduleId);
 		if (potentialModule.isPresent()) {

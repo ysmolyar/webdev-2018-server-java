@@ -22,6 +22,7 @@ public class Widget {
 	private String src;
 	private String listItems;
 	private String listType;
+	private int ordering;
 	@ManyToOne
 	@JsonIgnore
 	private Lesson lesson;
@@ -105,6 +106,14 @@ public class Widget {
 
 	public void setLesson(Lesson lesson) {
 		this.lesson = lesson;
+	}
+
+	public int getOrdering() {
+		return ordering;
+	}
+
+	public void setOrdering(int ordering) {
+		this.ordering = ordering;
 	}
 
 

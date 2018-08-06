@@ -31,7 +31,7 @@ public class LessonService {
     @PostMapping("/api/course/{cid}/module/{mid}/lesson")
     public Lesson createLesson(@RequestBody Lesson lesson, @PathVariable("mid") int mid) {
         Optional<Module> maybeModule = moduleRepository.findById(mid);
-        if (maybeModule != null) {
+        if (maybeModule.isPresent()) {
             Module module = maybeModule.get();
             List<Lesson> moduleLessons = module.getLessons();
             moduleLessons.add(lesson);
