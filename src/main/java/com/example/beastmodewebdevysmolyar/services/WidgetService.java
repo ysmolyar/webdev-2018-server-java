@@ -50,9 +50,10 @@ public class WidgetService {
     
     @PutMapping("/api/widget/{widgetId}")
 	public void updateWidget(@PathVariable("widgetId") int widgetId, @RequestBody Widget widget) {
-		Widget thisWidget = widgetRepository.findWidgetById(widgetId);
+		Optional<Widget> optional = widgetRepository.findById(widgetId);
 		
-		if (thisWidget != null) {
+		if (optional.isPresent()) {
+			Widget thisWidget = optional.get();
 			thisWidget.setTitle(widget.getTitle());
 			thisWidget.setText(widget.getText());
 			thisWidget.setSize(widget.getSize());
